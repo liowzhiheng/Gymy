@@ -1,1 +1,11 @@
-<p>fitness-videos works!</p>
+<h2>Fitness Videos</h2>
+<input type="text" [(ngModel)]="searchQuery">
+<button (click)="searchVideos()">Search</button>
+<div class="grid">
+    <div *ngFor="let item of videos" class="card">
+        <a [href]="'https://www.youtube.com/watch?v=' + item.video.videoId" target="_blank">
+            <img [src]="item.video.thumbnails[0].url" [alt]="item.video.title">
+            <h4>{{ item.video.title }}</h4>
+        </a>
+    </div>
+</div>

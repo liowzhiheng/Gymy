@@ -1,1 +1,9 @@
-<p>healthy-recipes works!</p>
+<h2>Healthy Recipe Idea</h2>
+<button (click)="getRecipe()">Get New Recipe</button>
+<div *ngIf="recipe" class="recipe-card">
+    <h3>{{ recipe.strMeal }}</h3>
+    <img [src]="recipe.strMealThumb" [alt]="recipe.strMeal">
+    <p><strong>Cuisine:</strong> {{ recipe.strArea }}</p>
+    <h4>Instructions</h4>
+    <p class="instructions">{{ recipe.strInstructions }}</p>
+</div>

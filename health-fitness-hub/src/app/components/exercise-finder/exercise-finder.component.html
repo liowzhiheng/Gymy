@@ -1,1 +1,11 @@
-<p>exercise-finder works!</p>
+<h2>Exercise Finder</h2>
+<select [(ngModel)]="selectedBodyPart" (change)="getExercises()">
+    <option *ngFor="let part of bodyParts" [value]="part">{{ part | titlecase }}</option>
+</select>
+<div class="grid">
+    <div *ngFor="let exercise of exercises" class="card">
+        <img [src]="exercise.gifUrl" [alt]="exercise.name" loading="lazy">
+        <h4>{{ exercise.name | titlecase }}</h4>
+        <p>Target: {{ exercise.target }}</p>
+    </div>
+</div>

@@ -15,6 +15,6 @@ export class ExerciseService {
 
   constructor(private http: HttpClient) { }
   getExercisesByBodyPart(bodyPart: string): Observable<any> {
-    return this.http.get(`<span class="math-inline">\{this\.apiUrl\}/bodyPart/</span>{bodyPart}`, { headers: this.headers });
+    return this.http.get(`${this.apiUrl}/bodyPart/${bodyPart}`, { headers: this.headers });
   }
 }
