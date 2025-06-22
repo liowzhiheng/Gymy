@@ -7,10 +7,10 @@ import { environment } from '../../environments/environment.development';
   providedIn: 'root'
 })
 export class YoutubeService {
-  private apiUrl = 'https://Youtube-and-download.p.rapidapi.com/search';
+  private apiUrl = 'https://Youtube-search-and-download.p.rapidapi.com/search';
   private headers = new HttpHeaders()
     .set('X-RapidAPI-Key', environment.rapidApiKey)
-    .set('X-RapidAPI-Host', 'Youtube-and-download.p.rapidapi.com');
+    .set('X-RapidAPI-Host', 'Youtube-search-and-download.p.rapidapi.com');
 
   constructor(private http: HttpClient) { }
 

@@ -14,6 +14,7 @@ export class ExerciseService {
     .set('X-RapidAPI-Host', 'exercisedb.p.rapidapi.com');
 
   constructor(private http: HttpClient) { }
+  
   getExercisesByBodyPart(bodyPart: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/bodyPart/${bodyPart}`, { headers: this.headers });
   }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RecipeService } from '../../services/recipe.service';
 
@@ -8,7 +8,7 @@ import { RecipeService } from '../../services/recipe.service';
   templateUrl: './healthy-recipes.component.html',
   styleUrl: './healthy-recipes.component.css'
 })
-export class HealthyRecipesComponent {
+export class HealthyRecipesComponent implements OnInit {
   recipe: any;
 
   constructor(private recipeService: RecipeService) { }

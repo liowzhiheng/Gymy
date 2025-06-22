@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; 
 import { ExerciseService } from '../../services/exercise.service';
@@ -10,7 +10,7 @@ import { ExerciseService } from '../../services/exercise.service';
   styleUrl: './exercise-finder.component.css',
   
 })
-export class ExerciseFinderComponent {
+export class ExerciseFinderComponent implements OnInit{
  exercises: any[] = [];
   bodyParts: string[] = ['back', 'chest', 'cardio', 'shoulders', 'upper arms'];
   selectedBodyPart: string = 'back';
