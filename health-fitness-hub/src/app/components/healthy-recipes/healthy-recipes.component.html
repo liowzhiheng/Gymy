@@ -1,9 +1,26 @@
-<h2>Healthy Recipe Idea</h2>
-<button (click)="getRecipe()">Get New Recipe</button>
-<div *ngIf="recipe" class="recipe-card">
-    <h3>{{ recipe.strMeal }}</h3>
-    <img [src]="recipe.strMealThumb" [alt]="recipe.strMeal">
-    <p><strong>Cuisine:</strong> {{ recipe.strArea }}</p>
-    <h4>Instructions</h4>
-    <p class="instructions">{{ recipe.strInstructions }}</p>
+<h2>Nutrition Analyzer</h2>
+<p>Enter a food description (e.g., "1 large apple") to analyze its nutritional content.</p>
+
+<input type="text" [(ngModel)]="searchQuery" placeholder="Enter food description...">
+<button (click)="onAnalyze()" [disabled]="!searchQuery || isLoading">
+  {{ isLoading ? 'Analyzing...' : 'Analyze' }}
+</button>
+
+<div *ngIf="isLoading" class="loading">
+  <p>Analyzing, please wait...</p>
+</div>
+
+<div *ngIf="analysisResult" class="recipe-card">
+  <h3>Analysis Results for: {{ analysisResult.label | titlecase }}</h3>
+  <img *ngIf="analysisResult.image" [src]="analysisResult.image" [alt]="analysisResult.label">
+  <ul>
+      <li><strong>Calories:</strong> {{ analysisResult.nutrients.ENERC_KCAL | number:'1.0-0' }}</li>
+      <li><strong>Protein:</strong> {{ analysisResult.nutrients.PROCNT | number:'1.0-1' }} g</li>
+      <li><strong>Fat:</strong> {{ analysisResult.nutrients.FAT | number:'1.0-1' }} g</li>
+      <li><strong>Carbohydrates:</strong> {{ analysisResult.nutrients.CHOCDF | number:'1.0-1' }} g</li>
+  </ul>
+</div>
+
+<div *ngIf="errorMessage" class="error-card">
+  <p>{{ errorMessage }}</p>
 </div>
