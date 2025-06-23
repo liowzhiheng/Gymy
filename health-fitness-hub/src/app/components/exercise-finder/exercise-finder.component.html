@@ -3,7 +3,7 @@
     <p class="subtitle">Select a body part to see a list of exercises.</p>
 
     <div class="search-area">
-        <select>
+        <select [(ngModel)]="selectedBodyPart" (change)="getExercises()">
             <option value="" disabled selected>Select a Body Part...</option>
             <option *ngFor="let part of bodyParts" [value]="part">{{ part | titlecase }}</option>
         </select>
@@ -11,14 +11,11 @@
 
     <div class="results-grid">
         <div *ngFor="let exercise of exercises" class="nutrition-card animated-fade-in">
-
             <div class="card-image-wrapper">
                 <img class="card-image" [src]="exercise.gifUrl" [alt]="exercise.name + ' animation'">
             </div>
-
             <div class="card-content">
                 <h3 class="card-title">{{ exercise.name | titlecase }}</h3>
-
                 <ul class="nutrient-list">
                     <li>
                         <span class="nutrient-name">Target</span>
@@ -32,7 +29,4 @@
             </div>
         </div>
     </div>
-
 </div>
-
-
