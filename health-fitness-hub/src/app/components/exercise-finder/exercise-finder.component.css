@@ -36,69 +36,7 @@
   margin-bottom: 2rem;
 }
 
-/* --- Search & Filter Controls --- */
-.search-area {
-  display: flex;
-  align-items: center;
-  max-width: 550px;
-  margin: 0 auto 2.5rem auto;
-  border: 1px solid #ccc;
-  border-radius: 24px;
-  overflow: hidden;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  background-color: var(--card-bg-color);
-}
 
-.search-area:focus-within {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.2);
-}
-
-.search-area input {
-  width: 100%;
-  flex-grow: 1;
-  padding: 12px 18px;
-  font-size: 1rem;
-  border: none;
-  outline: none;
-  background: transparent;
-}
-
-.search-area select {
-  width: 100%;
-  flex-grow: 1;
-  padding: 12px 18px;
-  font-size: 1rem;
-  border: none;
-  outline: none;
-  background: transparent;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  cursor: pointer;
-}
-
-.search-area button {
-  flex-shrink: 0;
-  padding: 12px 28px;
-  font-size: 1rem;
-  font-weight: 500;
-  color: #fff;
-  background-color: var(--primary-color);
-  border: none;
-  outline: none;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.search-area button:hover:not(:disabled) {
-  background-color: var(--primary-hover-color);
-}
-
-.search-area button:disabled {
-  background-color: #a0a0a0;
-  cursor: not-allowed;
-}
 
 /* --- Grid Layout for Cards --- */
 .results-grid {
@@ -291,3 +229,34 @@
 }
 
 
+.search-input {
+  display: flex;
+  flex: 1;
+}
+.search {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.search select {
+  flex: 1;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 20px 20px 20px 20px;
+  font-size: 16px;
+  outline: none;
+}
+
+.search h2 {
+  margin: 0;
+  color: #425344;
+  font-size: 24px;
+  white-space: nowrap;
+  min-width: 300px;
+}

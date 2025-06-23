@@ -1,32 +1,34 @@
-<div class="analyzer-container">
-    <h2>Exercise Finder</h2>
-    <p class="subtitle">Select a body part to see a list of exercises.</p>
+<div>
+    <div class="search">
+        <h2>Exercise Finder</h2>
 
-    <div class="search-area">
-        <select [(ngModel)]="selectedBodyPart" (change)="getExercises()">
-            <option value="" disabled selected>Select a Body Part...</option>
-            <option *ngFor="let part of bodyParts" [value]="part">{{ part | titlecase }}</option>
-        </select>
+        <div class="search-input">
+            <select [(ngModel)]="selectedBodyPart" (change)="getExercises()">
+                <option value="" disabled selected>Select a Body Part...</option>
+                <option *ngFor="let part of bodyParts" [value]="part">{{ part | titlecase }}</option>
+            </select>
+        </div>
     </div>
-
-    <div class="results-grid">
-        <div *ngFor="let exercise of exercises" class="nutrition-card animated-fade-in">
-            <div class="card-image-wrapper">
-                <img class="card-image" [src]="exercise.gifUrl" [alt]="exercise.name + ' animation'">
-            </div>
-            <div class="card-content">
-                <h3 class="card-title">{{ exercise.name | titlecase }}</h3>
-                <ul class="nutrient-list">
-                    <li>
-                        <span class="nutrient-name">Target</span>
-                        <span class="nutrient-value">{{ exercise.target | titlecase }}</span>
-                    </li>
-                    <li>
-                        <span class="nutrient-name">Equipment</span>
-                        <span class="nutrient-value">{{ exercise.equipment | titlecase }}</span>
-                    </li>
-                </ul>
+    
+    <div class="analyzer-container">
+        <div class="results-grid">
+            <div *ngFor="let exercise of exercises" class="nutrition-card animated-fade-in">
+                <div class="card-image-wrapper">
+                    <img class="card-image" [src]="exercise.gifUrl" [alt]="exercise.name + ' animation'">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">{{ exercise.name | titlecase }}</h3>
+                    <ul class="nutrient-list">
+                        <li>
+                            <span class="nutrient-name">Target</span>
+                            <span class="nutrient-value">{{ exercise.target | titlecase }}</span>
+                        </li>
+                        <li>
+                            <span class="nutrient-name">Equipment</span>
+                            <span class="nutrient-value">{{ exercise.equipment | titlecase }}</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
