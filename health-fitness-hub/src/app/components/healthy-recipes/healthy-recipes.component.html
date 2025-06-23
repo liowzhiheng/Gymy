@@ -1,26 +1,60 @@
-<h2>Nutrition Analyzer</h2>
-<p>Enter a food description (e.g., "1 large apple") to analyze its nutritional content.</p>
+<div class="analyzer-container">
+  <h2>Nutrition Analyzer</h2>
+  <p class="subtitle">Enter a food description (e.g., "1 large apple") to analyze its nutritional content.</p>
 
-<input type="text" [(ngModel)]="searchQuery" placeholder="Enter food description...">
-<button (click)="onAnalyze()" [disabled]="!searchQuery || isLoading">
-  {{ isLoading ? 'Analyzing...' : 'Analyze' }}
-</button>
+  <div class="search-area">
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      (keyup.enter)="onAnalyze()"
+      placeholder="Enter food description...">
+    <button (click)="onAnalyze()" [disabled]="!searchQuery || isLoading">
+      {{ isLoading ? 'Analyzing...' : 'Analyze' }}
+    </button>
+  </div>
 
-<div *ngIf="isLoading" class="loading">
-  <p>Analyzing, please wait...</p>
-</div>
+  <div *ngIf="isLoading" class="results-container">
+    <div class="skeleton-card">
+      <div class="skeleton-image shimmer-effect"></div>
+      <div class="skeleton-content">
+        <div class="skeleton-title shimmer-effect"></div>
+        <div class="skeleton-line shimmer-effect"></div>
+        <div class="skeleton-line shimmer-effect"></div>
+        <div class="skeleton-line shimmer-effect"></div>
+        <div class="skeleton-line shimmer-effect"></div>
+      </div>
+    </div>
+  </div>
 
-<div *ngIf="analysisResult" class="recipe-card">
-  <h3>Analysis Results for: {{ analysisResult.label | titlecase }}</h3>
-  <img *ngIf="analysisResult.image" [src]="analysisResult.image" [alt]="analysisResult.label">
-  <ul>
-      <li><strong>Calories:</strong> {{ analysisResult.nutrients.ENERC_KCAL | number:'1.0-0' }}</li>
-      <li><strong>Protein:</strong> {{ analysisResult.nutrients.PROCNT | number:'1.0-1' }} g</li>
-      <li><strong>Fat:</strong> {{ analysisResult.nutrients.FAT | number:'1.0-1' }} g</li>
-      <li><strong>Carbohydrates:</strong> {{ analysisResult.nutrients.CHOCDF | number:'1.0-1' }} g</li>
-  </ul>
-</div>
+  <div *ngIf="errorMessage && !isLoading" class="error-card">
+    <p>{{ errorMessage }}</p>
+  </div>
 
-<div *ngIf="errorMessage" class="error-card">
-  <p>{{ errorMessage }}</p>
+  <div class="results-container">
+  <div *ngIf="analysisResult && !isLoading" class="nutrition-card animated-fade-in">
+    <div class="card-image-wrapper">
+      <img *ngIf="analysisResult.image" [src]="analysisResult.image" [alt]="analysisResult.label" class="card-image">
+    </div>
+    <div class="card-content">
+      <h3 class="card-title">{{ analysisResult.label | titlecase }}</h3>
+      <ul class="nutrient-list">
+        <li>
+          <span class="nutrient-name">Calories</span>
+          <span class="nutrient-value">{{ analysisResult.nutrients.ENERC_KCAL | number:'1.0-0' }}</span>
+        </li>
+        <li>
+          <span class="nutrient-name">Protein</span>
+          <span class="nutrient-value">{{ analysisResult.nutrients.PROCNT | number:'1.0-1' }} g</span>
+        </li>
+        <li>
+          <span class="nutrient-name">Fat</span>
+          <span class="nutrient-value">{{ analysisResult.nutrients.FAT | number:'1.0-1' }} g</span>
+        </li>
+        <li>
+          <span class="nutrient-name">Carbs</span>
+          <span class="nutrient-value">{{ analysisResult.nutrients.CHOCDF | number:'1.0-1' }} g</span>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

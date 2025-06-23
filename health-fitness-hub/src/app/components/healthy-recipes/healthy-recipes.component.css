@@ -1,0 +1,276 @@
+/* src/app/components/healthy-recipes/healthy-recipes.component.css */
+:root {
+    --primary-color: #1e88e5;
+    --primary-hover-color: #1565c0;
+    --card-bg-color: #ffffff;
+    --text-primary-color: #212529;
+    --text-secondary-color: #6c757d;
+    --container-bg-color: #f4f7f9;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --card-hover-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    --border-radius: 8px;
+}
+
+.analyzer-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.analyzer-container h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--text-primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.analyzer-container .subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary-color);
+    margin-bottom: 2rem;
+}
+
+.search-area {
+    display: flex;
+    align-items: center;
+    max-width: 550px;
+    margin: 0 auto 2rem auto;
+    border: 1px solid #ccc;
+    border-radius: 24px;
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-area:focus-within {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.2);
+}
+
+.search-area input {
+    width: 100%;
+    flex-grow: 1;
+    padding: 12px 18px;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.search-area button {
+    flex-shrink: 0;
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    background-color: #1e88e5;
+    /* background-color: var(--primary-color); */
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.search-area button:hover:not(:disabled) {
+    background-color: #1565c0;
+    /* background-color: var(--primary-hover-color); */
+}
+
+.search-area button:disabled {
+    background-color: #a0a0a0;
+    cursor: not-allowed;
+}
+
+.results-container {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    perspective: 1000px;
+}
+
+.nutrition-card {
+    max-width: 340px;
+    width: 100%;
+    background: var(--card-bg-color);
+    border-radius: 16ps;
+    border-radius: 5%;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.05);
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.3s cubic-bezier(0.25,0.8,0.25,1), box-shadow 0.3s cubic-bezier(0.25,0.8,0.25,1);
+}
+
+.nutrition-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.08);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) rotateX(-5deg); 
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+}
+
+.animated-fade-in {
+    animation: fadeIn 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+
+.card-image-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center; 
+    align-items: center;   
+} 
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease-out;
+}
+
+.nutrition-card:hover .card-image {
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: 1.5rem 2rem;
+}
+
+.card-title {
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--text-primary-color);
+    line-height: 1.2;
+}
+
+.nutrient-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nutrient-list li {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    font-size: 1rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #f0f0f0; 
+    transition: background-color 0.2s ease;
+}
+
+.nutrient-list li:last-child {
+    border-bottom: none;
+}
+
+.nutrient-list li:hover {
+    background-color: #f8f9fa; 
+}
+
+.nutrient-name {
+    color: var(--text-secondary-color);
+    font-weight: 500;
+}
+
+.nutrient-value {
+    color: var(--text-primary-color);
+    font-weight: 600; 
+    font-feature-settings: "tnum"; 
+    -moz-font-feature-settings: "tnum";
+    -webkit-font-feature-settings: "tnum";
+}
+
+.loading,
+.error-card {
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    color: var(--text-secondary-color);
+}
+
+.error-card {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.shimmer-effect {
+  position: relative;
+  overflow: hidden;
+  background-color: #e0e0e0; 
+}
+
+.shimmer-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shimmer 1.5s infinite; 
+}
+
+
+.skeleton-card {
+  max-width: 340px;
+  width: 100%;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  padding: 0; 
+}
+
+.skeleton-image {
+  width: 100%;
+  aspect-ratio: 1 / 1; 
+  border-radius: 0;
+}
+
+.skeleton-content {
+  padding: 1.5rem 2rem;
+}
+
+.skeleton-title {
+  width: 60%;
+  height: 28px;
+  margin-bottom: 1.25rem;
+  border-radius: 8px;
+}
+
+.skeleton-line {
+  width: 100%;
+  height: 16px;
+  margin-top: 0.8rem;
+  border-radius: 6px;
+}
+
+.skeleton-line:last-child {
+  width: 80%;
+}
