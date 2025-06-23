@@ -36,19 +36,21 @@ export class FitnessVideosComponent implements OnInit {
     });
   }
 
-  performSearch(query: string): void {
+ performSearch(query: string): void {
     if (query.trim()) {
       this.isLoading = true;
       this.searchPerformed = true;
       this.showingRecommended = false;
       
       this.youtubeService.searchFitnessVideos(query).subscribe({
-        next: (data) => {
-          this.videos = data.contents || [];
+        next: (data: any) => {
+          const videoItems = data?.contents || [];
+          this.videos = videoItems.filter((item: any) => item && item.video);
           this.isLoading = false;
         },
-        error: (error) => {
+        error: (error: any) => {
           console.error('Error searching videos:', error);
+          this.videos = []; 
           this.isLoading = false;
         }
       });
