@@ -1,22 +1,57 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; // <-- IMPORT FOR NGMODEL
 import { YoutubeService } from '../../services/youtube.service';
 
 @Component({
   selector: 'app-fitness-videos',
-  imports: [CommonModule, FormsModule],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './fitness-videos.component.html',
-  styleUrl: './fitness-videos.component.css'
+  styleUrls: ['./fitness-videos.component.css']
 })
-export class FitnessVideosComponent {
+export class FitnessVideosComponent implements OnInit {
   videos: any[] = [];
-  searchQuery: string = '15 min home workout';
+  isLoading = false;
+  searchPerformed = false;
+  showingRecommended = true;
 
   constructor(private youtubeService: YoutubeService) { }
 
-  searchVideos(): void {
-    this.youtubeService.searchVideos(this.searchQuery)
-      .subscribe(data => { this.videos = data.contents; });
+  ngOnInit(): void {
+    this.loadRecommendedVideos();
+  }
+
+  loadRecommendedVideos(): void {
+    this.isLoading = true;
+    this.showingRecommended = true;
+    this.youtubeService.searchFitnessVideos('fitness workout beginner').subscribe({
+      next: (data) => {
+        this.videos = data.contents || [];
+        this.isLoading = false;
+      },
+      error: (error) => {
+        console.error('Error loading recommended videos:', error);
+        this.isLoading = false;
+      }
+    });
+  }
+
+  performSearch(query: string): void {
+    if (query.trim()) {
+      this.isLoading = true;
+      this.searchPerformed = true;
+      this.showingRecommended = false;
+      
+      this.youtubeService.searchFitnessVideos(query).subscribe({
+        next: (data) => {
+          this.videos = data.contents || [];
+          this.isLoading = false;
+        },
+        error: (error) => {
+          console.error('Error searching videos:', error);
+          this.isLoading = false;
+        }
+      });
+    }
   }
 }

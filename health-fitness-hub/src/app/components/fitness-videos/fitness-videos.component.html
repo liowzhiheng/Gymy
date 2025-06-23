@@ -1,12 +1,38 @@
-<h2>Fitness Videos</h2>
-<input type="text" [(ngModel)]="searchQuery">
-<button (click)="searchVideos()">Search</button>
-<div class="grid">
-    <div *ngFor="let item of videos" class="card">
-        <a [href]="'https://www.youtube.com/watch?v=' + item.video.videoId" target="_blank">
-            <img [src]="item.video.thumbnails[0].url" [alt]="item.video.title">
-            <h4>{{ item.video.title }}</h4>
-        </a>
+<div class="videos-container">
+  <div class="search">
+    <h2>Search For Fitness Videos</h2>
+    <div class="search-input">
+      <input #searchInput 
+             type="text" 
+             placeholder="e.g., squat form" 
+             (keyup.enter)="performSearch(searchInput.value)">
+      <button (click)="performSearch(searchInput.value)">Search</button>
     </div>
-</div>
+  </div>
+  
 
+  <h3 *ngIf="!isLoading && videos.length > 0" class="recommend-title">
+    {{ showingRecommended ? 'Recommended Fitness Videos' : 'Search Results' }}
+  </h3>
+
+  <div *ngIf="isLoading" class="loading-title">
+    <p>{{ showingRecommended ? 'Loading recommended videos...' : 'Searching for videos...' }}</p>
+  </div>
+
+  <div *ngIf="!isLoading" class="results-grid">
+    <div *ngFor="let item of videos" class="video-card">
+      <a [href]="'https://www.youtube.com/watch?v=' + item.video.videoId" target="_blank" rel="noopener noreferrer">
+        <img [src]="item.video.thumbnails[0].url" [alt]="item.video.title" class="thumbnail">
+        <h4 class="video-title">{{ item.video.title }}</h4>
+      </a>
+      <div class="video-info">
+        <p class="video-channel">{{ item.video.channelName }}</p>
+        <span class="video-views">{{ item.video.viewCountText }}</span>
+      </div>
+    </div>
+
+    <div *ngIf="searchPerformed && !showingRecommended && videos.length === 0" class="noresults">
+      <p>No videos found. Please try a different search term.</p>
+    </div>
+  </div>
+</div>
