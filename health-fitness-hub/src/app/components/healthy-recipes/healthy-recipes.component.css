@@ -1,4 +1,5 @@
 /* src/app/components/healthy-recipes/healthy-recipes.component.css */
+
 :root {
     --primary-color: #1e88e5;
     --primary-hover-color: #1565c0;
@@ -64,7 +65,7 @@
     font-size: 1rem;
     font-weight: 500;
     color: #fff;
-    background-color: #1e88e5;
+    background-color: #425344;
     /* background-color: var(--primary-color); */
     border: none;
     outline: none;
@@ -73,7 +74,7 @@
 }
 
 .search-area button:hover:not(:disabled) {
-    background-color: #1565c0;
+    background-color: #2d3a2f;
     /* background-color: var(--primary-hover-color); */
 }
 
