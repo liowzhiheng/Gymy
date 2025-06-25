@@ -1,44 +1,62 @@
+:host {
+    display: block;
+}
+
+/* Header Styles */
 header {
-  background: #425344;
-  color: white;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  height: 50px;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-
-
+    background: #425344;
+    color: white;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column; /* Stack vertically on mobile by default */
+    align-items: center;
+    gap: 1rem;
 }
 
 header h1 {
-  margin: 0;
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
 }
 
+/* Navigation Styles */
 nav {
-  padding: 1rem 2rem;
-  margin-top: 10px;
-  width: 100%;
-  background: #E9E9E9;
-  box-sizing: border-box;
-  align-items: center;
-
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 1.5rem; /* Consistent gap */
 }
 
+/* --- UNIFIED LINK STYLES FOR ALL SIZES --- */
+/* These styles will now apply to both mobile and desktop */
 nav a {
-  color: #425344;
-  margin: 0 15px;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  transition: border-bottom 0.3s;
-  border-bottom: 2px solid transparent;
+    color: white; /* Text is always white to show up on dark header */
+    text-decoration: none;
+    font-weight: 500;
+    background-color: transparent; /* Always transparent */
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent; /* Prepare for border animation */
+    transition: border-bottom-color 0.3s; /* Smooth transition for the underline */
 }
 
-nav a:hover, nav a.active {
-  background-color: transparent;
-  border-bottom: 2px solid #425344;
+/* Active and Hover state is now a consistent underline */
+nav a:hover,
+nav a.active {
+    border-bottom-color: white;
 }
 
 main {
-  padding: 2rem;
-  box-sizing: border-box;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+
+/* --- Responsive Media Queries (FOR LAYOUT ONLY) --- */
+/* For Tablets and Desktops (min-width: 769px) */
+@media (min-width: 769px) {
+    header {
+        flex-direction: row; /* Change to horizontal layout on bigger screens */
+        justify-content: space-between; 
+    }
 }

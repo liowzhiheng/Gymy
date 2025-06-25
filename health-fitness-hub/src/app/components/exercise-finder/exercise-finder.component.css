@@ -1,42 +1,25 @@
-
-/* --- Root Variables for Theming --- */
 :root {
-  --primary-color: #1e88e5;
-  --primary-hover-color: #1565c0;
   --card-bg-color: #ffffff;
   --text-primary-color: #212529;
   --text-secondary-color: #6c757d;
   --container-bg-color: #f4f7f9;
-  --card-shadow: 0 10px 20px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.05);
-  --card-hover-shadow: 0 15px 40px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.08);
   --border-radius-main: 16px;
   --border-radius-small: 8px;
+  --primary-color: #1e88e5;
 }
 
 /* --- General Body and Container Styles --- */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--container-bg-color);
+  margin: 0;
+}
+
 .analyzer-container {
   max-width: 1200px;
   margin: 2rem auto;
   padding: 2rem;
-  text-align: center;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background-color: var(--container-bg-color);
 }
-
-.analyzer-container h2 {
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: var(--text-primary-color);
-  margin-bottom: 0.5rem;
-}
-
-.analyzer-container .subtitle {
-  font-size: 1.1rem;
-  color: var(--text-secondary-color);
-  margin-bottom: 2rem;
-}
-
-
 
 /* --- Grid Layout for Cards --- */
 .results-grid {
@@ -44,34 +27,33 @@
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2.5rem;
   justify-items: center;
-  perspective: 1000px; /* For 3D animations on children */
 }
 
-/* --- Card Styles (Nutrition & Exercise) --- */
+/* --- Card Styles with Transitions --- */
 .nutrition-card {
-  max-width: 340px;
   width: 100%;
   background: var(--card-bg-color);
-  border-radius:16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  /* Directly setting the value here */
+  border-radius: 24px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.07);
   overflow: hidden;
   text-align: left;
-  transition: transform 0.3s cubic-bezier(0.25,0.8,0.25,1), box-shadow 0.3s cubic-bezier(0.25,0.8,0.25,1);
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .nutrition-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
 .card-image-wrapper {
   width: 100%;
   aspect-ratio: 1 / 1;
-  overflow: hidden;
-  background-color: #f0f0f0;
+  background-color: #e0e0e0;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .card-image {
@@ -90,12 +72,8 @@
 }
 
 .card-title {
-  margin-top: 0;
-  margin-bottom: 1.25rem;
+  margin: 0;
   font-size: 1.75rem;
-  font-weight: 600;
-  color: var(--text-primary-color);
-  line-height: 1.2;
 }
 
 .nutrient-list {
@@ -111,15 +89,10 @@
   font-size: 1rem;
   padding: 0.8rem 0;
   border-bottom: 1px solid #f0f0f0;
-  transition: background-color 0.2s ease;
 }
 
 .nutrient-list li:last-child {
   border-bottom: none;
-}
-
-.nutrient-list li:hover {
-  background-color: #f8f9fa;
 }
 
 .nutrient-name {
@@ -130,53 +103,40 @@
 .nutrient-value {
   color: var(--text-primary-color);
   font-weight: 600;
-  font-feature-settings: "tnum"; /* Tabular numbers for alignment */
-  -moz-font-feature-settings: "tnum";
-  -webkit-font-feature-settings: "tnum";
 }
 
-/* --- Animations --- */
+/* --- Animations for Card Entry --- */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px) rotateX(-5deg);
+    transform: translateY(20px);
   }
+
   to {
     opacity: 1;
-    transform: translateY(0) rotateX(0);
+    transform: translateY(0);
   }
 }
 
 .animated-fade-in {
-  animation: fadeIn 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+  animation: fadeIn 0.5s ease-out forwards;
 }
 
+/* --- Shimmer Animation and Skeleton Styles --- */
 @keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
+  0% {
+    transform: translateX(-100%);
+  }
 
-/* --- Loading, Error, and Skeleton States --- */
-.loading,
-.error-card {
-  margin-top: 2rem;
-  padding: 1rem;
-  border-radius: var(--border-radius-small);
-  background-color: #f8f9fa;
-  border: 1px solid #dee2e6;
-  color: var(--text-secondary-color);
-}
-
-.error-card {
-  background-color: #f8d7da;
-  color: #721c24;
-  border-color: #f5c6cb;
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 .shimmer-effect {
   position: relative;
   overflow: hidden;
-  background-color: #e9ecef;
+  background-color: #e0e0e0;
 }
 
 .shimmer-effect::after {
@@ -186,16 +146,16 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
   animation: shimmer 1.5s infinite;
 }
 
 .skeleton-card {
   max-width: 340px;
   width: 100%;
-  background: var(--card-bg-color);
+  background: #fff;
   border-radius: var(--border-radius-main);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
   overflow: hidden;
   padding: 0;
 }
@@ -229,34 +189,61 @@
 }
 
 
-.search-input {
-  display: flex;
-  flex: 1;
-}
+/* ========================================
+        FIXED SEARCH STYLES
+        ======================================== */
+
 .search {
   display: flex;
   align-items: center;
-  margin-top: 30px;
-  margin-bottom: 20px;
-  gap: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+
   max-width: 1200px;
   margin: 0 auto;
-  padding: 30px;
-}
-
-.search select {
-  flex: 1;
-  padding: 12px 15px;
-  border: 1px solid #ccc;
-  border-radius: 20px 20px 20px 20px;
-  font-size: 16px;
-  outline: none;
+  padding: 2rem;
 }
 
 .search h2 {
   margin: 0;
   color: #425344;
-  font-size: 24px;
-  white-space: nowrap;
-  min-width: 300px;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.search-input {
+  /* No specific styles needed for desktop */
+}
+
+.search select {
+  width: 280px;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  font-size: 16px;
+  outline: none;
+  background-color: white;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.2);
+}
+
+/* --- RESPONSIVE FIX FOR MOBILE --- */
+@media (max-width: 768px) {
+  .search {
+    justify-content: center;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .search select {
+    width: 100%;
+  }
 }
