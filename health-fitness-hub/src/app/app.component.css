@@ -1,4 +1,7 @@
-
+.site-title .plus-sign {
+  color: white;
+  font-style: italic;
+}
 /* Google Fonts Import for the "CORE+" theme */
 @import url('https://fonts.googleapis.com/css2?family=Teko:wght@700&family=Roboto:wght@500&display=swap');
 
@@ -22,6 +25,7 @@ header {
 header h1 {
     margin: 0;
     font-family: 'Teko', sans-serif; /* Font for the site title */
+    font-style: italic;
     
     font-weight: 700;
 }
