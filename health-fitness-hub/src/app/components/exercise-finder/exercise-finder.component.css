@@ -142,10 +142,10 @@ nav a {
 .search-input select {
   width: 100%;
   max-width: 400px;
-  padding: 15px;
+  padding: 10px;
   font-size: 1rem;
-  border-radius: 5px;
-  border: 2px solid #dfff00;
+  
+  
   background-color: #222;
   color: #fff;
   cursor: pointer;
@@ -241,7 +241,7 @@ nav a:hover {
 
 /* Hover effect for the dropdown select in the exercise finder */
 .search-input select:hover {
-  border-color: #ffff00; /* Brighter border on hover */
+  border-color: #b7ff00; /* Brighter border on hover */
   box-shadow: 0 0 5px #dfff00;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -253,3 +253,4 @@ nav a:hover {
   box-shadow: 10px 10px 25px rgba(223, 255, 0, 0.2); /* Add a subtle glow */
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
