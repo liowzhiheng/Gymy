@@ -1,18 +1,33 @@
-<div>
+
+
+<main class="main-section">
+    <div class="left-panel">
+        <div class="headline">
+            <h1 class="sore-today">Sore Today</h1>
+            <h1 class="strong-tomorrow">Strong<br>Tomorrow</h1>
+        </div>
+        <p class="sub-headline">
+            Every rep, every drop of sweat, every sore muscle — it's proof you're leveling up.
+        </p>
+        <a href="#exercise-finder" class="cta-anchor"><button class="cta-button">Choose Your Exercise</button></a>
+    </div>
+    <div class="right-panel">
+        </div>
+</main>
+
+<section id="exercise-finder" class="exercise-section">
     <div class="search">
         <h2>Exercise Finder</h2>
-
         <div class="search-input">
             <select [(ngModel)]="selectedBodyPart" (change)="getExercises()">
-                <option value="" disabled selected>Select a Body Part...</option>
                 <option *ngFor="let part of bodyParts" [value]="part">{{ part | titlecase }}</option>
             </select>
         </div>
     </div>
-    
-    <div class="analyzer-container">
+
+    <div *ngIf="exercises.length > 0; else noResults" class="analyzer-container">
         <div class="results-grid">
-            <div *ngFor="let exercise of exercises" class="nutrition-card animated-fade-in">
+            <div *ngFor="let exercise of exercises" class="nutrition-card">
                 <div class="card-image-wrapper">
                     <img class="card-image" [src]="exercise.gifUrl" [alt]="exercise.name + ' animation'">
                 </div>
@@ -32,3 +47,10 @@
             </div>
         </div>
     </div>
+
+    <ng-template #noResults>
+        <div class="no-results">
+          <p>Select a body part to see the exercises.</p>
+        </div>
+    </ng-template>
+</section>

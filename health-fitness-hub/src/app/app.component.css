@@ -1,53 +1,67 @@
+
+/* Google Fonts Import for the "CORE+" theme */
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@700&family=Roboto:wght@500&display=swap');
+
 :host {
     display: block;
+    font-family: 'Roboto', sans-serif; /* Default font for the app */
 }
 
 /* Header Styles */
 header {
-    background: #425344;
-    color: white;
-    padding: 1rem 2rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #dfff00;
+    color: #000;
+    padding: 0.5rem 6rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     display: flex;
-    flex-direction: column; /* Stack vertically on mobile by default */
+    flex-direction: column;
     align-items: center;
     gap: 1rem;
 }
 
 header h1 {
     margin: 0;
-    font-size: 2rem;
+    font-family: 'Teko', sans-serif; /* Font for the site title */
+    
     font-weight: 700;
 }
 
 /* Navigation Styles */
 nav {
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 1.5rem; /* Consistent gap */
+    gap: 2rem;
 }
 
-/* --- UNIFIED LINK STYLES FOR ALL SIZES --- */
-/* These styles will now apply to both mobile and desktop */
+/* --- UNIFIED LINK STYLES --- */
 nav a {
-    color: white; /* Text is always white to show up on dark header */
+    color: #000;
     text-decoration: none;
     font-weight: 500;
-    background-color: transparent; /* Always transparent */
+    font-size: 1rem;
     padding: 0.5rem 0;
-    border-bottom: 2px solid transparent; /* Prepare for border animation */
-    transition: border-bottom-color 0.3s; /* Smooth transition for the underline */
+    border-bottom: 2px solid transparent;
+    transition: border-bottom-color 0.3s;
+    /* THIS IS NOW THE ONLY RULE FOR THE NAV LINK FONT */
+    font-family: 'Teko', sans-serif;
+    font-weight: bold;
 }
 
-/* Active and Hover state is now a consistent underline */
+/* Active and Hover state ONLY changes the border color */
 nav a:hover,
 nav a.active {
-    border-bottom-color: white;
+   /* You can add a style to make it stand out, like an underline or different color */
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  
+  
+  /* MOST IMPORTANTLY: Re-state that the font should be bold */
+  font-weight: bold;
 }
 
+/* Main content area */
 main {
-    padding: 2rem;
     box-sizing: border-box;
 }
 
@@ -56,7 +70,8 @@ main {
 /* For Tablets and Desktops (min-width: 769px) */
 @media (min-width: 769px) {
     header {
-        flex-direction: row; /* Change to horizontal layout on bigger screens */
-        justify-content: space-between; 
+        flex-direction: row;
+        justify-content: space-between;
+        /* The conflicting font-family rule has been REMOVED from here */
     }
 }

@@ -1,83 +1,201 @@
-:root {
-  --card-bg-color: #ffffff;
-  --text-primary-color: #212529;
-  --text-secondary-color: #6c757d;
-  --container-bg-color: #f4f7f9;
-  --border-radius-main: 16px;
-  --border-radius-small: 8px;
-  --primary-color: #1e88e5;
+/* ====================================================== */
+/* This file now contains ALL styles for the component   */
+/* ====================================================== */
+
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+/* Apply base styles to the component's host element */
+:host {
+  display: block;
+  background-color: #000;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  scroll-behavior: smooth;
+  /* Enables smooth scrolling for anchor links */
 }
 
-/* --- General Body and Container Styles --- */
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background-color: var(--container-bg-color);
+/* Header Styles */
+header {
+  background-color: #dfff00;
+  padding: 15px 50px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-family: 'Teko', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #000;
+  text-decoration: none;
+}
+
+nav ul {
+  list-style: none;
   margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav li {
+  margin-left: 40px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* STYLES FOR THE MAIN HERO SECTION (This is what was missing) */
+.main-section {
+  display: flex;
+  min-height: 100vh;
+}
+
+.left-panel {
+  flex-basis: 50%;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px 100px;
+}
+
+.right-panel {
+  flex-basis: 50%;
+  background-image: url('../../assets/images/modified.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.headline h1 {
+  font-family: 'Teko', sans-serif;
+  font-size: 8rem;
+  line-height: 0.9;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.headline .sore-today {
+  font-weight: 200;
+  color: #fff;
+}
+
+.headline .strong-tomorrow {
+  color: #dfff00;
+}
+
+.sub-headline {
+  font-size: 18px;
+  max-width: 400px;
+  margin: 30px 0;
+  line-height: 1.6;
+  font-family: 'Teko', sans-serif;
+  font-weight: 100;
+}
+
+.cta-anchor {
+  text-decoration: none;
+}
+
+.cta-button {
+  background-color: #dfff00;
+  color: #000;
+  border: none;
+  padding: 15px 35px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+/* STYLES FOR THE EXERCISE FINDER SECTION */
+.exercise-section {
+  padding: 80px 50px;
+  text-align: center;
+
+}
+
+.exercise-section h2 {
+  font-family: 'Teko', sans-serif;
+  font-size: 3rem;
+  color: #dfff00;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.search-input select {
+  width: 100%;
+  max-width: 400px;
+  padding: 15px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 2px solid #dfff00;
+  background-color: #222;
+  color: #fff;
+  cursor: pointer;
 }
 
 .analyzer-container {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 2rem;
+  margin-top: 50px;
 }
 
-/* --- Grid Layout for Cards --- */
 .results-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2.5rem;
-  justify-items: center;
-}
-
-/* --- Card Styles with Transitions --- */
-.nutrition-card {
-  width: 100%;
-  background: var(--card-bg-color);
-  /* Directly setting the value here */
-  border-radius: 24px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.07);
-  overflow: hidden;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
   text-align: left;
-  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.nutrition-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+.nutrition-card {
+  background-color: #222;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #333;
 }
 
 .card-image-wrapper {
   width: 100%;
-  aspect-ratio: 1 / 1;
-  background-color: #e0e0e0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  height: 250px;
+  background: #000;
 }
 
 .card-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease-out;
-}
-
-.nutrition-card:hover .card-image {
-  transform: scale(1.05);
 }
 
 .card-content {
-  padding: 1.5rem 2rem;
+  padding: 20px;
 }
 
 .card-title {
-  margin: 0;
-  font-size: 1.75rem;
+  font-family: 'Teko', sans-serif;
+  font-size: 1.8rem;
+  margin: 0 0 15px 0;
+  color: #dfff00;
 }
 
 .nutrient-list {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
   margin: 0;
 }
@@ -85,10 +203,8 @@ body {
 .nutrient-list li {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  font-size: 1rem;
-  padding: 0.8rem 0;
-  border-bottom: 1px solid #f0f0f0;
+  padding: 8px 0;
+  border-bottom: 1px solid #333;
 }
 
 .nutrient-list li:last-child {
@@ -96,154 +212,44 @@ body {
 }
 
 .nutrient-name {
-  color: var(--text-secondary-color);
-  font-weight: 500;
+  font-weight: bold;
+  color: #ccc;
 }
 
 .nutrient-value {
-  color: var(--text-primary-color);
-  font-weight: 600;
+  text-transform: capitalize;
 }
 
-/* --- Animations for Card Entry --- */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.no-results {
+  margin-top: 50px;
+  color: #888;
+  font-size: 1.2rem;
 }
 
-.animated-fade-in {
-  animation: fadeIn 0.5s ease-out forwards;
+/* Hover effect for navigation links in the header */
+nav a:hover {
+  color: #a8b324; /* Darker shade of the main yellow for a subtle effect */
+  transition: color 0.3s ease;
 }
 
-/* --- Shimmer Animation and Skeleton Styles --- */
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-
-  100% {
-    transform: translateX(100%);
-  }
+/* Hover effect for the main Call-to-Action button */
+.cta-button:hover {
+  background-color: #c3ff00; /* Brighter yellow on hover */
+  box-shadow: 0 0 10px #dfff00; /* Add a glow effect */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.shimmer-effect {
-  position: relative;
-  overflow: hidden;
-  background-color: #e0e0e0;
+/* Hover effect for the dropdown select in the exercise finder */
+.search-input select:hover {
+  border-color: #ffff00; /* Brighter border on hover */
+  box-shadow: 0 0 5px #dfff00;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.shimmer-effect::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  animation: shimmer 1.5s infinite;
-}
-
-.skeleton-card {
-  max-width: 340px;
-  width: 100%;
-  background: #fff;
-  border-radius: var(--border-radius-main);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
-  overflow: hidden;
-  padding: 0;
-}
-
-.skeleton-image {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  border-radius: 0;
-}
-
-.skeleton-content {
-  padding: 1.5rem 2rem;
-}
-
-.skeleton-title {
-  width: 60%;
-  height: 28px;
-  margin-bottom: 1.25rem;
-  border-radius: var(--border-radius-small);
-}
-
-.skeleton-line {
-  width: 100%;
-  height: 16px;
-  margin-top: 0.8rem;
-  border-radius: 6px;
-}
-
-.skeleton-line:last-child {
-  width: 80%;
-}
-
-
-/* ========================================
-        FIXED SEARCH STYLES
-        ======================================== */
-
-.search {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.search h2 {
-  margin: 0;
-  color: #425344;
-  font-size: 2rem;
-  font-weight: 600;
-}
-
-.search-input {
-  /* No specific styles needed for desktop */
-}
-
-.search select {
-  width: 280px;
-  padding: 12px 15px;
-  border: 1px solid #ccc;
-  border-radius: 25px;
-  font-size: 16px;
-  outline: none;
-  background-color: white;
-  box-sizing: border-box;
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.search select:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.2);
-}
-
-/* --- RESPONSIVE FIX FOR MOBILE --- */
-@media (max-width: 768px) {
-  .search {
-    justify-content: center;
-  }
-
-  .search-input {
-    width: 100%;
-  }
-
-  .search select {
-    width: 100%;
-  }
+/* Hover effect for the exercise result cards */
+.nutrition-card:hover {
+  transform: translateY(-10px); /* Lift the card up slightly */
+  
+  box-shadow: 10px 10px 25px rgba(223, 255, 0, 0.2); /* Add a subtle glow */
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
