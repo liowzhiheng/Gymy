@@ -1,9 +1,10 @@
+/* Google Fonts Import for the "CORE+" theme */
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@700&family=Roboto:wght@500&display=swap');
+
 .site-title .plus-sign {
   color: white;
   font-style: italic;
 }
-/* Google Fonts Import for the "CORE+" theme */
-@import url('https://fonts.googleapis.com/css2?family=Teko:wght@700&family=Roboto:wght@500&display=swap');
 
 :host {
     display: block;
@@ -20,6 +21,11 @@ header {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
 
 header h1 {
@@ -67,6 +73,7 @@ nav a.active {
 /* Main content area */
 main {
     box-sizing: border-box;
+    padding-top: 60px;
 }
 
 

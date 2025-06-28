@@ -25,4 +25,11 @@ export class ExerciseFinderComponent implements OnInit{
     this.exerciseService.getExercisesByBodyPart(this.selectedBodyPart)
       .subscribe(data => { this.exercises = data; });
   }
+
+  scrollToExerciseFinder(): void {
+    const element = document.getElementById('exercise-finder');
+    if(element) {
+      element.scrollIntoView({behavior: 'smooth', block:'start'});
+    }
+}
 }
