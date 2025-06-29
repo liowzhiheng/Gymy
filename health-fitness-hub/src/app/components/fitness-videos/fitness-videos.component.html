@@ -1,22 +1,30 @@
-<div class="videos-container">
-  <div class="search">
-    <h2>Search For Fitness Videos</h2>
-    <div class="search-input">
-      <input #searchInput 
+<div class="video-container">
+  <div class="search-area">
+    <h2>Fitness Videos</h2>
+    <div class="search-input-group">
+      <input 
              type="text" 
+             [(ngModel)]="searchQuery"
              placeholder="e.g., squat form" 
-             (keyup.enter)="performSearch(searchInput.value)">
-      <button (click)="performSearch(searchInput.value)">Search</button>
+             (keyup.enter)="performSearch()">
+      <button (click)="performSearch()" [disabled]="isLoading">
+        {{ isLoading ? 'Searching...' : 'Search' }}
+      </button>
     </div>
-  </div>
+    </div>
   
-
   <h3 *ngIf="!isLoading && videos.length > 0" class="recommend-title">
     {{ showingRecommended ? 'Recommended Fitness Videos' : 'Search Results' }}
   </h3>
 
-  <div *ngIf="isLoading" class="loading-title">
-    <p>{{ showingRecommended ? 'Loading recommended videos...' : 'Searching for videos...' }}</p>
+  <div *ngIf="isLoading" class="results-grid">
+    <div *ngFor="let i of [1,2,3,4,5,6]" class="skeleton-video-card">
+      <div class="skeleton-thumbnail shimmer-effect"></div>
+      <div class="skeleton-video-content">
+        <div class="skeleton-video-title shimmer-effect"></div>
+        <div class="skeleton-video-info shimmer-effect"></div>
+      </div>
+    </div>
   </div>
 
   <div *ngIf="!isLoading" class="results-grid">

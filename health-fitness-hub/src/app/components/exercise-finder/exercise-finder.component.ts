@@ -27,9 +27,34 @@ export class ExerciseFinderComponent implements OnInit{
   }
 
   scrollToExerciseFinder(): void {
-    const element = document.getElementById('exercise-finder');
-    if(element) {
-      element.scrollIntoView({behavior: 'smooth', block:'start'});
+    // 1. Find the target element you want to scroll to
+    const targetElement = document.getElementById('exercise-finder');
+
+    // 2. Find the global sticky header using its class name
+    const headerElement = document.querySelector('header.site-header') as HTMLElement;
+
+    // 3. Safety check: Make sure both elements were found before proceeding
+    if (!targetElement || !headerElement) {
+      console.error('Could not find the target section or the site header.');
+      // Fallback to a simple scroll if the header isn't found for some reason
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      return;
     }
-}
+
+    // 4. Dynamically get the real-time height of the sticky header
+    const headerHeight = headerElement.offsetHeight;
+
+    // 5. Calculate the correct position to scroll to
+    // This is: the top of the target element, plus current scroll distance, minus the header's height
+    const elementPosition = targetElement.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+    // 6. Use the window.scrollTo method to scroll to the precisely calculated position
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+  }
 }

@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms'; // REQUIRED: Import FormsModule
 import { YoutubeService } from '../../services/youtube.service';
 
 @Component({
   selector: 'app-fitness-videos',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule, 
+    FormsModule // REQUIRED: Add FormsModule to the component's imports
+  ], 
   templateUrl: './fitness-videos.component.html',
   styleUrls: ['./fitness-videos.component.css']
 })
@@ -14,6 +18,9 @@ export class FitnessVideosComponent implements OnInit {
   isLoading = false;
   searchPerformed = false;
   showingRecommended = true;
+  
+  // REQUIRED: Add the searchQuery property for ngModel
+  searchQuery: string = ''; 
 
   constructor(private youtubeService: YoutubeService) { }
 
@@ -36,7 +43,10 @@ export class FitnessVideosComponent implements OnInit {
     });
   }
 
- performSearch(query: string): void {
+  // UPDATED: This method now uses this.searchQuery and takes no arguments
+  performSearch(): void {
+    const query = this.searchQuery;
+
     if (query.trim()) {
       this.isLoading = true;
       this.searchPerformed = true;

@@ -10,7 +10,7 @@
     --text-secondary-color: #6c757d;
     --theme-lime-color: #dfff00;
     /* Defining the new theme color as a variable */
-    
+
     --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     --card-hover-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
     --border-radius: 8px;
@@ -64,28 +64,21 @@
     padding: 12px 18px;
     font-size: 1rem;
     color: #ffffff;
-    /* White input text */
     background-color: transparent;
-    /* No background fill */
     border: 3px solid #dfff00;
-    ;
-    /* Bright lime border */
     border-right: none;
-    /* Remove right border to connect to the button */
-    border-radius: 6px 0 0 6px;
-    /* Rectangular shape with rounded left corners */
     outline: none;
     transition: box-shadow 0.3s;
+    border-radius: 6px 0 0 6px;
 }
 
 .search-area input::placeholder {
     color: #888;
-    
     /* Dimmed placeholder text */
 }
 
 .search-area input:focus {
-    box-shadow: 0 0 10px rgba(223, 255, 0, 0.5);
+    box-shadow: 0 0 10px #b7ff00;
     /* Add a glow effect on focus */
 }
 
@@ -94,25 +87,20 @@
     padding: 12px 28px;
     font-size: 1rem;
     font-weight: 600;
-    /* Bolder text */
-    font-family: 'Teko', sans-serif;
-    /* Match the theme font */
+    font-family: 'Teko',sans-serif;
+    text-transform: uppercase;
     color: #000000;
-    /* Black text for high contrast */
     background-color: #dfff00;
-    /* Bright lime background */
     border: 0px solid #dfff00;
-    /* Matching border */
-    border-radius: 0 6px 6px 0;
-    /* Rectangular shape with rounded right corners */
     outline: none;
     cursor: pointer;
+    border-radius: 0 6px 6px 0;
     transition: background-color 0.2s, box-shadow 0.2s;
 }
 
 /* Make the button glow when the input is focused for a unified component feel */
 .search-area input:focus+button {
-    box-shadow: 0 0 10px rgba(223, 255, 0, 0.5);
+    box-shadow: 0 0 10px #b7ff00;
 }
 
 .search-area button:hover:not(:disabled) {
@@ -138,7 +126,6 @@
 }
 
 .nutrition-card {
-    font-family: 'Teko', sans-serif;
     max-width: 340px;
     width: 100%;
     background: var(--card-bg-color);
@@ -198,6 +185,7 @@
 }
 
 .card-title {
+    font-family: 'Teko', sans-serif;
     margin-top: 0;
     margin-bottom: 1.25rem;
     font-size: 2.75rem;
@@ -213,12 +201,11 @@
 }
 
 .nutrient-list li {
-
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 1rem;
-    padding: 0.8rem 0;
+    padding: 0.8rem;
     border-bottom: 1px solid #f0f0f0;
     transition: background-color 0.2s ease;
 }
@@ -229,6 +216,7 @@
 
 .nutrient-list li:hover {
     background-color: #f8f9fa;
+    color: black;
 }
 
 .nutrient-name {
@@ -254,66 +242,71 @@
 }
 
 @keyframes shimmer {
-  100% {
-    transform: translateX(100%);
-  }
+    100% {
+        transform: translateX(100%);
+    }
 }
 
 .shimmer-effect {
-  position: relative;
-  overflow: hidden;
-  /* MODIFIED: A dark grey base for the skeleton elements */
-  background-color: #2c2c2c;
+    position: relative;
+    overflow: hidden;
+    /* MODIFIED: A dark grey base for the skeleton elements */
+    background-color: #2c2c2c;
 }
 
 .shimmer-effect::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* MODIFIED: A more subtle, dark-theme-friendly shimmer effect */
-  background: linear-gradient(90deg, transparent, rgba(80, 80, 80, 0.5), transparent);
-  transform: translateX(-100%);
-  animation: shimmer 1.8s infinite; /* Slowed down the animation a bit for a sleeker feel */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* MODIFIED: A more subtle, dark-theme-friendly shimmer effect */
+    background: linear-gradient(90deg, transparent, rgba(80, 80, 80, 0.5), transparent);
+    transform: translateX(-100%);
+    animation: shimmer 1.8s infinite;
+    /* Slowed down the animation a bit for a sleeker feel */
 }
 
 /* MODIFIED: The skeleton card itself has a darker background */
 .skeleton-card {
-  max-width: 340px;
-  width: 100%;
-  background: #1a1a1a; /* A very dark grey, almost black */
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* A more subtle shadow for dark mode */
-  overflow: hidden;
-  border: 1px solid #333; /* A faint border to define the card */
+    max-width: 340px;
+    width: 100%;
+    background: #1a1a1a;
+    /* A very dark grey, almost black */
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    /* A more subtle shadow for dark mode */
+    overflow: hidden;
+    border: 1px solid #333;
+    /* A faint border to define the card */
 }
 
 /* The rest of the skeleton structure styles are mostly fine, but we'll ensure they exist */
 .skeleton-image {
-  width: 100%;
-  aspect-ratio: 1 / 1; /* Match the final card's image ratio */
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /* Match the final card's image ratio */
 }
 
 .skeleton-content {
-  padding: 1.5rem 2rem;
+    padding: 1.5rem 2rem;
 }
 
 .skeleton-title {
-  width: 60%;
-  height: 28px;
-  margin-bottom: 1.25rem;
-  border-radius: 8px;
+    width: 60%;
+    height: 28px;
+    margin-bottom: 1.25rem;
+    border-radius: 8px;
 }
 
 .skeleton-line {
-  width: 100%;
-  height: 16px;
-  margin-top: 0.8rem;
-  border-radius: 6px;
+    width: 100%;
+    height: 16px;
+    margin-top: 0.8rem;
+    border-radius: 6px;
 }
 
 .skeleton-line:last-child {
-  width: 80%;
+    width: 80%;
 }
