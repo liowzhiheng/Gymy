@@ -87,7 +87,7 @@
     padding: 12px 28px;
     font-size: 1rem;
     font-weight: 600;
-    font-family: 'Teko',sans-serif;
+    font-family: 'Teko', sans-serif;
     text-transform: uppercase;
     color: #000000;
     background-color: #dfff00;
@@ -110,9 +110,9 @@
 }
 
 .search-area button:disabled {
-    background-color: #555;
-    border-color: #555;
-    color: #aaa;
+    background-color: #b7ff00;
+    /* border-color: #555; */
+    color: black;
     cursor: not-allowed;
 }
 
@@ -126,21 +126,18 @@
 }
 
 .nutrition-card {
-    max-width: 340px;
-    width: 100%;
-    background: var(--card-bg-color);
-    border: 2px solid #dfff00;
-    /* Bright lime border */
-    border-radius: 5%;
-    box-shadow: 0 10px 20px rgba(245, 255, 108, 0.119), 0 1px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid #333;
+    border-radius: 10px;
     overflow: hidden;
     text-align: left;
-    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: #1a1a1a;
 }
 
 .nutrition-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(232, 255, 55, 0.351), 0 5px 10px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 25px rgba(223, 255, 0, 0.1);
 }
 
 @keyframes fadeIn {
@@ -154,10 +151,10 @@
         transform: translateY(0) rotateX(0);
     }
 }
-
-.animated-fade-in {
-    animation: fadeIn 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
-}
+ 
+/* .animated-fade-in {
+   animation: fadeIn 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+} */
 
 .card-image-wrapper {
     width: 100%;
