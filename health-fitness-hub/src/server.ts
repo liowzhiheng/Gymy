@@ -12,30 +12,14 @@ const serverDistFolder = dirname(fileURLToPath(import.meta.url));
 const browserDistFolder = resolve(serverDistFolder, '../browser');
 
 const app = express();
-const angularApp = new AngularNodeAppEngine();
+const angularApp = new AngularNodeAppEngine(); // Reverted: No arguments here
 
 /**
  * Example Express Rest API endpoints can be defined here.
  * Uncomment and define endpoints as necessary.
- *
- * Example:
- * ```ts
- * app.get('/api/**', (req, res) => {
- *   // Handle API request
- * });
- * ```
  */
 
-/**
- * Serve static files from /browser
- */
-app.use(
-  express.static(browserDistFolder, {
-    maxAge: '1y',
-    index: false,
-    redirect: false,
-  }),
-);
+// ...The rest of the file should match the original...
 
 /**
  * Handle all other requests by rendering the Angular application.
@@ -48,6 +32,8 @@ app.use('/**', (req, res, next) => {
     )
     .catch(next);
 });
+
+// ...The rest of the file should match the original...
 
 /**
  * Start the server if this module is the main entry point.

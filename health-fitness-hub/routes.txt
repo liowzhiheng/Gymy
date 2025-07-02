@@ -1,0 +1,4 @@
+/exercise-videos/bicep-curls
+/exercise-videos/squats
+/exercise-videos/push-ups
+/exercise-videos/lunges
