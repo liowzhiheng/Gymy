@@ -1,0 +1,32 @@
+<div class="video-container">
+  <h2 *ngIf="exerciseName" class="recommend-title">
+    Recommended Videos for {{ exerciseName | titlecase }}
+  </h2>
+
+  <div *ngIf="isLoadingVideos" class="results-grid">
+    <div *ngFor="let i of [1,2,3,4,5,6]" class="skeleton-video-card">
+      <div class="skeleton-thumbnail shimmer-effect"></div>
+      <div class="skeleton-video-content">
+        <div class="skeleton-video-title shimmer-effect"></div>
+        <div class="skeleton-video-info shimmer-effect"></div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!isLoadingVideos && recommendedVideos.length > 0" class="results-grid">
+    <div *ngFor="let item of recommendedVideos" class="video-card">
+      <a [href]="'https://www.youtube.com/watch?v=' + item.video.videoId" target="_blank" rel="noopener noreferrer">
+        <img [src]="item.video.thumbnails[0].url" [alt]="item.video.title" class="thumbnail">
+        <h4 class="video-title">{{ item.video.title }}</h4>
+      </a>
+      <div class="video-info">
+        <p class="video-channel">{{ item.video.channelName }}</p>
+        <span class="video-views">{{ item.video.viewCountText }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!isLoadingVideos && recommendedVideos.length === 0" class="noresults">
+    <p>No recommended videos found for this exercise.</p>
+  </div>
+</div>
