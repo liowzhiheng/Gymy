@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment.development';
 export class ExerciseService {
   private apiUrl = 'https://exercisedb.p.rapidapi.com/exercises';
   private headers = new HttpHeaders()
-    .set('X-RapidAPI-Key', '9982a19df0msh4f21175130254a4p165e5ajsnef42bdaa5822')
+    .set('X-RapidAPI-Key', environment.rapidApiKey)
     .set('X-RapidAPI-Host', 'exercisedb.p.rapidapi.com');
 
   constructor(private http: HttpClient) { }
