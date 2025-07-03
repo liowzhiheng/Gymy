@@ -9,7 +9,7 @@ import { ExerciseVideoDetailComponent } from './components/exercise-video-detail
 
 
 export const routes: Routes = [
-     { path: '', redirectTo: '/exercises', pathMatch: 'full' }, // Default route
+     { path: '', redirectTo: '/exercises', pathMatch: 'full' }, 
     { path: 'exercises', component: ExerciseFinderComponent },
     { path: 'videos', component: FitnessVideosComponent },
     { path: 'recipes', component: HealthyRecipesComponent },

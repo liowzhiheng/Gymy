@@ -1,4 +1,4 @@
-/* Google Fonts Import for the "CORE+" theme */
+
 @import url('https://fonts.googleapis.com/css2?family=Teko:wght@700&family=Roboto:wght@500&display=swap');
 
 .site-title .plus-sign {
@@ -8,10 +8,10 @@
 
 :host {
     display: block;
-    font-family: 'Roboto', sans-serif; /* Default font for the app */
+    font-family: 'Roboto', sans-serif; 
 }
 
-/* Header Styles */
+
 header {
     background-color: #dfff00;
     color: #000;
@@ -30,12 +30,12 @@ header {
 
 header h1 {
     margin: 0;
-    font-family: 'Teko', sans-serif; /* Font for the site title */
+    font-family: 'Teko', sans-serif; 
     font-style: italic;
     font-weight: 700;
 }
 
-/* Navigation Styles */
+
 nav {
     display: flex;
     flex-wrap: wrap;
@@ -43,7 +43,7 @@ nav {
     gap: 2rem;
 }
 
-/* --- UNIFIED LINK STYLES --- */
+
 nav a {
     color: #000;
     text-decoration: none;
@@ -52,40 +52,39 @@ nav a {
     padding: 0.2rem 0;
     border-bottom: 2px solid transparent;
     transition: border-bottom-color 0.3s;
-    /* THIS IS NOW THE ONLY RULE FOR THE NAV LINK FONT */
+  
     font-family: 'Teko', sans-serif;
     font-weight: bold;
 }
 
-/* Active and Hover state ONLY changes the border color */
+
 nav a:hover,
 nav a.active {
-   /* You can add a style to make it stand out, like an underline or different color */
+   
   text-decoration: underline;
   text-decoration-thickness: 2px;
   
   
-  /* MOST IMPORTANTLY: Re-state that the font should be bold */
+  
   font-weight: bold;
 }
 
-/* Main content area */
+
 main {
     box-sizing: border-box;
     padding-top: 200px;
 }
 
 
-/* --- Responsive Media Queries (FOR LAYOUT ONLY) --- */
-/* For Tablets and Desktops (min-width: 769px) */
+
 @media (min-width: 769px) {
     header {
         flex-direction: row;
         justify-content: space-between;
-        /* The conflicting font-family rule has been REMOVED from here */
+       
     }
 
     main {
-        padding: 70px 0px; /* Adjusted padding for larger screens */
+        padding: 70px 0px; 
     }
 }

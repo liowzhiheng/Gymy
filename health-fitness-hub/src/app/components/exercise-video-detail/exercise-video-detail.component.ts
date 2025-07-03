@@ -21,12 +21,12 @@ export class ExerciseVideoDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Get the exercise name from the route parameters
+    
     this.route.paramMap.subscribe(params => {
       const encodedExerciseName = params.get('exerciseName');
       if (encodedExerciseName) {
-        // Decode the URL parameter here
-        this.exerciseName = decodeURIComponent(encodedExerciseName); // ADD THIS LINE
+    
+        this.exerciseName = decodeURIComponent(encodedExerciseName); 
         this.loadRecommendedVideos(this.exerciseName);
       }
     });

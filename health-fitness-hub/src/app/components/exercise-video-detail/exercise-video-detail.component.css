@@ -1,4 +1,4 @@
-/* Google Fonts Import */
+
 @import url('https://fonts.googleapis.com/css2?family=Teko:wght@400;700&family=Roboto:wght@400;700&display=swap');
 
 .video-container {
@@ -12,7 +12,6 @@
 
 
 
-/* --- Themed Recommendation Title --- */
 .recommend-title {
   color: #f0f0f0;
   font-size: 1.5rem;
@@ -23,7 +22,7 @@
   padding-bottom: 15px;
 }
 
-/* --- Results Grid --- */
+
 .results-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -31,7 +30,7 @@
   gap: 30px;
 }
 
-/* --- Themed Video Card --- */
+
 .video-card {
   border: 1px solid #333;
   border-radius: 10px;
@@ -83,7 +82,7 @@
   align-items: center;
 }
 
-/* --- Themed Status Messages --- */
+
 .noresults {
   grid-column: 1 / -1;
   padding: 50px;
@@ -92,16 +91,16 @@
   text-align: center;
 }
 
-/* --- Responsive Adjustments for Desktop --- */
+
 @media (min-width: 768px) {
   .search-area {
-    /* On larger screens, switch back to horizontal layout */
+    
     flex-direction: row;
     justify-content: space-between;
   }
 }
 
-/* --- Skeleton Shimmer Styles --- */
+
 @keyframes shimmer {
   100% {
     transform: translateX(100%);

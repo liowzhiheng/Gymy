@@ -12,7 +12,6 @@ import { RecipeService } from '../../services/recipe.service';
 })
 export class HealthyRecipesComponent {
   searchQuery: string = '1 large apple';
-  // The API returns a single object, not an array
   analysisResult: any = null;
   isLoading = false;
   errorMessage: string | null = null;
